@@ -1,0 +1,354 @@
+#HomePageMainframe:
+    
+<HomePageMainframe>:
+    id:main_container
+    orientation:'horizontal'
+    padding:'5dp'
+    canvas:
+        Color:
+            rgba:(1,243/255,178/255,1)
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    BoxLayout:
+        size_hint:(.4,1)
+        spacing:'10dp'
+        padding:'10dp'
+        orientation:'vertical'
+        canvas.before:
+            Color:
+                rgba:230/255,220/255,161/255,1
+            RoundedRectangle:
+                size:[i-20 for i in self.size]
+                pos:[i+10 for i in self.pos]
+        FloatLayout:
+            size_hint:(1,None)
+            height:'75dp'
+            canvas.before:
+                Color:
+                    rgba:0,0,0,.1
+                RoundedRectangle:
+                    pos:self.pos
+                    size:self.size
+            BoxLayout:
+                padding:'6dp'
+                size_hint:(None,1)
+                size:("90dp",'100dp')
+                
+                pos_hint:{'x':0,'center_y':.5}
+                
+                orientation:"horizontal"
+                EnhancedImage:
+                    spacing:"5dp"
+                    padding:"5dp"
+                    id:user_profile_picture
+                    size_hint_x:.4
+                    #size:35,35
+                    
+                    pos_hint:{'center_x':.5,'center_y':.5}
+                    #pos:self.pos
+                    source:'david_photo.png'
+                    #keep_ratio:False
+                    #allow_stretch:True
+                    on_press:main_container.do()
+                Label:
+                    size_hint_x:.4 #None,None
+                    #size:35,35
+                    pos_hint:{"center_x":.5,"center_y":.5}
+                    font_size:"12dp"
+                    text_color: rgba(1,.8,.5,1)
+                    id:zone_label
+                    text:'Chats'
+            BoxLayout:
+                size_hint:(None,None)
+                size:("60dp","100dp")
+                spacing:"12dp"
+                pos_hint:{'right':1,'center_y':.5}
+                
+                ButtonImage:
+                    id:user_profile_picture
+                    size_hint:(None,None)
+                    pos_hint:{'center_x':.5,'center_y':.5}
+                    size:20,20
+                    #pos:self.pos
+                    source:'C:/code/chat app v1/engine/login_engine_with_database_and_gui_(kivy)/the_gui/res/rewrite_symbol.png'
+                    keep_ratio:False
+                    allow_stretch:True
+                ButtonImage:
+                    size_hint_x:None
+                    width:20
+                    source:'C:/code/chat app v1/engine/login_engine_with_database_and_gui_(kivy)/the_gui/res/more_button.png'
+                    #keep_ratio:False
+                    #allow_stretch:True
+                    pos_hint:{"right":1.2}
+
+        FloatLayout:
+            id:search_blanket
+            size_hint:(1,None)
+            height:'30dp'
+            canvas.before:
+                Color:
+                    rgba:0,168/255,89/255,.2
+                Rectangle:
+                    size:self.size
+                    pos:self.pos
+                Color:
+                    rgba:1,1,1,0.9
+                Line:
+                    points:(self.pos[0],self.pos[1],self.pos[0]+self.size[0],self.pos[1],)
+            TextInput:
+                multiline:False
+                cursor_color:(0,168/255,89/255,1)
+                background_color:(0,0,0,0)
+                size_hint:(None,None)
+                size:(search_blanket.size[0]-search_button.size[0]-2,search_blanket.size[1])
+                pos:search_blanket.pos
+                hint_text:'search friend'
+                
+            ButtonImage:
+                id:search_button
+                source:'C:/code/chat app v1/engine/login_engine_with_database_and_gui_(kivy)/the_gui/res/search_button.png'
+                size_hint:(None,None)
+                size:'25dp','25dp'
+                pos:(search_blanket.pos[0]+search_blanket.size[0]-self.size[0]-5,search_blanket.pos[1]+2)
+                
+        BoxLayout:
+            ScrollView:
+                #minimum_height:self.height
+                BoxLayout:
+                    spacing:'3dp'
+                    size_hint:1,None
+                    height:self.minimum_height
+                    #cols:2
+                    id: friend_list
+                    orientation:'vertical'
+                    Button:
+                        background_color:(0,0,0,0)
+                        size_hint:(1,None)
+                        height:'75dp'
+                        canvas:
+                            Color:
+                                rgba:(0,168/255,89/255,1)
+                            Rectangle:
+                                pos:self.pos
+                                size:self.size
+                    Button:
+                        size_hint:(1,None)
+                        height:'75dp'
+                        canvas:
+                            Color:
+                                rgba:(0,168/255,89/255,1)
+                            Rectangle:
+                                pos:self.pos
+                                size:self.size
+                    Button:
+                        size_hint:(1,None)
+                        height:'75dp'
+                        canvas:
+                            Color:
+                                rgba:(0,168/255,89/255,1)
+                            Rectangle:
+                                pos:self.pos
+                                size:self.size
+                    Button:
+                        size_hint:(1,None)
+                        height:'75dp'
+                        canvas:
+                            Color:
+                                rgba:(0,168/255,89/255,1)
+                            Rectangle:
+                                pos:self.pos
+                                size:self.size
+                    Button:
+                        size_hint:(1,None)
+                        height:'75dp'
+                        canvas:
+                            Color:
+                                rgba:(0,168/255,89/255,1)
+                            Rectangle:
+                                pos:self.pos
+                                size:self.size
+                    Button:
+                        size_hint:(1,None)
+                        height:'75dp'
+                        canvas:
+                            Color:
+                                rgba:(0,168/255,89/255,1)
+                            Rectangle:
+                                pos:self.pos
+                                size:self.size
+                    Button:
+                        size_hint:(1,None)
+                        height:'75dp'
+                        canvas:
+                            Color:
+                                rgba:(0,168/255,89/255,1)
+                            Rectangle:
+                                pos:self.pos
+                                size:self.size
+                    Button:
+                        size_hint:(1,None)
+                        height:'75dp'
+                        canvas:
+                            Color:
+                                rgba:(0,168/255,89/255,1)
+                            Rectangle:
+                                pos:self.pos
+                                size:self.size
+                    Button:
+                        size_hint:(1,None)
+                        height:'75dp'
+                        canvas:
+                            Color:
+                                rgba:(0,168/255,89/255,1)
+                            Rectangle:
+                                pos:self.pos
+                                size:self.size
+                    Button:
+                        size_hint:(1,None)
+                        height:'75dp'
+                        canvas:
+                            Color:
+                                rgba:(0,168/255,89/255,1)
+                            Rectangle:
+                                pos:self.pos
+                                size:self.size
+                    
+                    
+                        
+                    
+               
+    BoxLayout:
+        orientation:'vertical'
+        spacing:'5dp'
+        id:right
+        
+            
+        Image:
+            id:chat_bg
+            allow_stretch:True
+            keep_ratio:False
+            source:'C:/code/chat app v1/engine/login_engine_with_database_and_gui_(kivy)/the_gui/res/chat_bg.png'
+            size:self.size
+        FloatLayout:
+            id:friend_tab
+            size_hint:(1,None)
+            #width:0
+            height:0
+            #id:text_box
+            BoxLayout:
+                size_hint:(.99,None)
+                #width:chat_bg.width-
+                height:"80dp"
+                canvas:
+                    #Color:
+                        #rgba:(0,1,0,1)
+                    #RoundedRectangle:
+                        #pos:self.pos
+                        #size:self.size
+                pos:chat_bg.pos[0]+10,chat_bg.pos[1]+chat_bg.size[1]-75
+                BoxLayout:
+                    size_hint:(None,None)
+                    size:(70,80)
+                    EnhancedImage:
+                        id:friend_profile_picture
+                        size_hint:(None,None)
+                        size:60,60
+                        pos_hint:{'center_x':.5,'center_y':.5}
+                        source:'david_photo.png' # 
+                        keep_ratio:False
+                        allow_stretch:True
+                    BoxLayout:
+                        size_hint:(None,.7)
+                        
+                        width:120
+                        orientation:'vertical'
+                        
+                        pos_hint:{"center_x":.5}
+                        padding:0
+                        spacing:0
+                        Label:
+                            text:"friend"
+                            valign:"bottom"
+                        Label:
+                            text:"status | "
+                            valign:"top"
+                    BoxLayout:
+        FloatLayout:
+            size_hint:(1,None)
+            pos:(right.pos[0],55)
+            height:0
+            #canvas.before:
+                #RoundedRectangle:
+                    #pos:(right.pos[0],55)
+                    #size:(320,320)
+            FloatLayout:
+                pos:(100,55)
+                size_hint:(None,None)
+                size:(320,700)
+                ScrollView:
+                    id:chat_board_scroll_view
+                    pos:(right.pos[0]+10,55)
+                    size_hint:(None,None)
+                    size:(right.size[0]-20,right.size[1]-friend_tab.size[1]-130) #(320,320)
+                    
+                    BoxLayout:
+                        id:chat_board
+                        spacing:'30dp'
+                        size_hint:1,None
+                        height:self.minimum_height
+                        orientation:'vertical'
+                        pos:(right.pos[0],55)
+                        #size:(320,320)
+
+                        
+                        
+                        
+                    
+        FloatLayout:
+            size_hint:(1,None)
+            #width:0
+            height:0
+            id:text_box
+            
+            canvas:
+                Color:
+                    rgba:230/255,220/255,161/255,1
+                
+                RoundedRectangle:
+                    size:self.size[0]-20,45-10
+                    pos:text_box.pos[0]+10,text_box.pos[1]+10
+                Color:
+                    rgba:35/255,148/255,67/255,1
+                
+                Line:
+                    rounded_rectangle:(text_box.pos[0]+10,text_box.pos[1]+10,self.size[0]-20,45-10,10)
+                    #size:self.size[0]-20,45-10
+                    #pos:10,10
+            TextInput:
+                id:text_area
+                cursor_color:(0,168/255,89/255,1)
+                background_color:(1,0,0,0)
+                size_hint:(None,None)
+                size:text_box.size[0]-55,45-10
+                pos:text_box.pos[0]+10,text_box.pos[1]+10
+                clamp:12
+                on_text_validate:main_container.create_text_label(self.text)
+                hint_text:'Type a message'
+                #height:self.minimum_height
+                #text:"grandalf"
+            ButtonImage:
+                id:send_button
+                allow_stretch:True
+                keep_ratio:False
+                pos:(text_box.pos[0]+text_box.size[0]-self.size[0]-17, text_box.pos[1]+17)
+                source:"C:/code/chat app v1/engine/login_engine_with_database_and_gui_(kivy)/the_gui/res/send_button.png"
+                size_hint:(None,None)
+                width: "20dp"
+                height: "20dp"
+                on_release:main_container.create_text_label(text_area.text)
+                
+                
+            
+        
+        

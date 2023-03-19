@@ -1,0 +1,191 @@
+
+
+
+#<signup_screen@Screen>:
+    #Mainframe:
+<Mainframe2>:
+    canvas:
+        Color:
+            rgba: 1,243/255,178/255,1
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    BoxLayout:
+        #size_hint:(None,None)
+        #size:('400dp,400dp')
+        spacing:'10dp'
+        padding:'10dp'
+        BoxLayout:
+            orientation:'vertical'
+            size_hint:(.4,1)
+                
+            canvas:
+                
+                Color:
+                    rgba: 1,1,1,1  #169/255,161/255,118/255,1
+                Line:
+                    rectangle:(list(self.pos)+list(self.size))
+                    width:3
+
+            Image:
+                size_hint:(.8,.8)
+                pos_hint:{'center_x':.5,'center_y':.5}
+                padding:'5dp'
+                source:'C:/code/chat app v1/engine/login_engine_with_database_and_gui_(kivy)/the_gui/res/logo_2.png'
+            Label:
+                color:(41/255,153/255,72/255,1)
+                text:'Welcome'
+                font_family:'Clarendon BT'
+                font_size:40
+                valign:'top'
+        BoxLayout:
+            padding:'50dp'
+            orientation:'vertical'
+            BoxLayout:
+                orientation:'vertical'
+                size_hint:(1,.4)
+                #height:'75dp'
+                Label:
+                    color:(41/255,153/255,72/255,1)
+                    text:'First Name'
+                    size_hint:(1,None)
+                    height:'20dp'
+                    text_size:self.size
+                    valign:'center'
+                    pos_hint:{'center_y':.5}
+                    
+                TextInput:
+                    multiline:False
+                    id:first_name
+                    cursor_color:(41/255,153/255,72/255,1)
+                    background_color: (0,0,0,0)
+                    background_normal:''
+                    size_hint:(1,None)
+                    size:100,'30dp'
+                    pos_hint:{'center_x':0.5}
+                    on_text_validate:surname.focus=True
+                    canvas.after:
+                        Color:
+                            rgba: (41/255,153/255,72/255,1)
+                        Line:
+                            points:[self.pos[0],self.pos[1],self.pos[0]+self.width,self.pos[1]]
+            BoxLayout:
+                orientation:'vertical'
+                size_hint:(1,.4)
+                #height:'75dp'
+                Label:
+                    color:(41/255,153/255,72/255,1)
+                    text:'Surname'
+                    size_hint:(1,None)
+                    height:'20dp'
+                    text_size:self.size
+                    valign:'center'
+                    pos_hint:{'center_y':.5}
+                    
+                TextInput:
+                    multiline:False
+                    id:surname
+                    cursor_color:(41/255,153/255,72/255,1)
+                    background_color: (0,0,0,0)
+                    background_normal:''
+                    size_hint:(1,None)
+                    size:100,'30dp'
+                    pos_hint:{'center_x':0.5}
+                    on_text_validate:create_username.focus=True
+                    canvas.after:
+                        Color:
+                            rgba: (41/255,153/255,72/255,1)
+                        Line:
+                            points:[self.pos[0],self.pos[1],self.pos[0]+self.width,self.pos[1]]
+            BoxLayout:
+                orientation:'vertical'
+                size_hint:(1,.4)
+                #height:'75dp'
+                Label:
+                    color:(41/255,153/255,72/255,1)
+                    text:'Username'
+                    size_hint:(1,None)
+                    height:'20dp'
+                    text_size:self.size
+                    valign:'center'
+                    pos_hint:{'center_y':.5}
+                    
+                TextInput:
+                    id:create_username
+                    multiline:False
+                    cursor_color:(41/255,153/255,72/255,1)
+                    background_color: (0,0,0,0)
+                    background_normal:''
+                    size_hint:(1,None)
+                    size:100,'30dp'
+                    pos_hint:{'center_x':0.5}
+                    on_text_validate:create_password.focus=True
+                    canvas.after:
+                        Color:
+                            rgba: (41/255,153/255,72/255,1)
+                        Line:
+                            points:[self.pos[0],self.pos[1],self.pos[0]+self.width,self.pos[1]]
+            BoxLayout:
+                orientation:'vertical'
+                size_hint:(1,.4)
+                #height:'75dp'
+                Label:
+                    color:(41/255,153/255,72/255,1)
+                    text:'Password'
+                    size_hint:(1,None)
+                    height:'20dp'
+                    text_size:self.size
+                    valign:'center'
+                    pos_hint:{'center_y':.5}
+                    
+                TextInput:
+                    id:create_password
+                    multiline:False
+                    password:True
+                    cursor_color:(41/255,153/255,72/255,1)
+                    background_color: (0,0,0,0)
+                    background_normal:''
+                    size_hint:(1,None)
+                    size:100,'30dp'
+                    pos_hint:{'center_x':0.5}
+                    on_text_validate:confirm_password.focus=True
+                    canvas.after:
+                        Color:
+                            rgba: (41/255,153/255,72/255,1)
+                        Line:
+                            points:[self.pos[0],self.pos[1],self.pos[0]+self.width,self.pos[1]]
+            BoxLayout:
+                orientation:'vertical'
+                size_hint:(1,.4)
+                #height:'75dp'
+                Label:
+                    color:(41/255,153/255,72/255,1)
+                    text:'Confirm Password'
+                    size_hint:(1,None)
+                    height:'20dp'
+                    text_size:self.size
+                    valign:'center'
+                    pos_hint:{'center_y':.5}
+                    
+                TextInput:
+                    id:confirm_password
+                    multiline:False
+                    password:True
+                    cursor_color:(41/255,153/255,72/255,1)
+                    background_color: (0,0,0,0)
+                    background_normal:''
+                    size_hint:(1,None)
+                    size:100,'30dp'
+                    pos_hint:{'center_x':0.5}
+                    #on_text_validate:create_username.focus=True
+                    canvas.after:
+                        Color:
+                            rgba: (41/255,153/255,72/255,1)
+                        Line:
+                            points:[self.pos[0],self.pos[1],self.pos[0]+self.width,self.pos[1]]
+            BoxLayout:
+                Button:
+                    text:"Sign Up"
+                    size_hint:(None,None)
+                    size:(400,50)
+            

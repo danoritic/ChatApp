@@ -1,0 +1,78 @@
+MainFrame:
+
+
+<MainFrame@BoxLayout>:
+    padding:'3dp'
+    canvas:
+        Color:
+            rgba:1,.5,.5,.8
+        Rectangle:
+            size:self.size
+    BoxLayout:
+        canvas:
+            Color:
+                rgba:1,0,1,1
+            RoundedRectangle:
+                radius:[20,]
+                pos:self.pos
+                size:self.size
+        
+        size_hint:.4,1
+        padding:'1dp'
+        orientation:'vertical'
+        BoxLayout:
+            size_hint:.3,.3
+        ScrollView:
+            
+            ButtonList:
+                size_hint_y:None
+                height:self.minimum_height # Dancing with the sand
+        
+    BoxLayout:
+        
+        orientation: 'vertical'
+        size_hint:1,1                    
+        BoxLayout:
+            spacing:'10dp'
+            padding:'10dp'
+            orientation: 'vertical'
+            id:maxin
+            canvas:
+                Color:
+                    rgba:1,1,0,.8
+                RoundedRectangle:
+                    radius:[20,]
+                    #source:'C:/code/kivying/Snooze_80.contrast-white.png'
+                    
+                    pos:self.pos
+                    size:self.size
+            
+            BoxLayout:
+                id:malone
+                orientation: 'vertical'
+                size_hint: 1,.1
+                canvas:
+                    Color:
+                        rgba:1,0,1,1
+                    RoundedRectangle:
+                        radius:[20,]
+                        pos:self.pos
+                        size:self.size
+                        #pos:(maxin.pos[0]+10,maxin.pos[1]+maxin.size[1]*.88)
+                        #size:(maxin.size[0]-20,maxin.size[1]/10)
+                   
+            BoxLayout:
+                canvas:
+                    Color:
+                        rgba:1,0,1,1
+                    RoundedRectangle:
+                        radius:[5,]
+                        pos:self.pos
+                        size:self.size
+                    
+                            
+                    
+            #text:'baoba'
+        
+        
+    

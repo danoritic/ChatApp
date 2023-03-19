@@ -1,0 +1,14 @@
+MyBox:
+
+<MyBox>:
+    Label:
+        size_hint:(1,1)
+        
+
+        canvas.before:
+            Color:
+                rgba:0,1,0,1
+            Rectangle:
+                pos:self.pos
+                size:tuple([i-20 for i in self.size])
+        text:'fraternise'

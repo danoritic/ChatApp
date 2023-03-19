@@ -1,0 +1,174 @@
+#: include TheSignupPage.kv
+#: include TheHomePage.kv
+
+<ScreenHandler>:
+    id:sm
+    Mainframe:
+        name: 'login_screen'
+    Screen:
+        name: 'signup_screen'
+        Mainframe2:
+    Screen:
+        name:"home_screen"
+        HomePageMainframe:
+
+
+#<login_screen@Screen>:
+    #Mainframe:
+
+<Mainframe>:
+    id:mainframe
+    AnchorLayout:
+        size_hint:(.8,.8)
+        pos_hint:{'center_x':.5,'center_y':.5}
+        padding: '10dp'
+        canvas.before:
+            Color:
+                rgba: 1,243/255,178/255,1
+            Rectangle:
+                pos:(0,0)
+                size:(i*1.4 for i in self.size)
+            Color:
+                rgba: 35/255,148/255,67/255,.8
+            RoundedRectangle:
+                pos:self.pos
+                size:self.size
+                
+        BoxLayout:
+            orientation:'vertical'
+            spacing:'20dp'
+            AnchorLayout:
+                padding:'20dp'
+                size_hint:(None,None)
+                size:('250dp','250dp')
+                pos_hint:{'center_x':.5,'top':0}
+                Image:
+                    size_hint:(.7,.7)
+                    source:'C:/code/chat app v1/engine/login_engine_with_database_and_gui_(kivy)/the_gui/res/logo.png'
+                #allow_stretch
+                
+            BoxLayout:
+                spacing:'30dp'
+                padding:('50dp','0dp','50dp',0)
+                size_hint:1,.2
+                BoxLayout:
+                    size_hint:(1,.5)
+                    pos_hint:{'center_y':.5}
+                    orientation: 'vertical'
+                    
+                    Label:
+                        text:'Username'
+                        text_size:self.size
+                        halign:'left'
+                        pos_hint:{'x':0,'y':0}
+                        size_hint:(None,None)
+                        #halign:'right'
+                        padding_x:0
+                        size:100,30
+                    TextInput:
+                        cursor_color:(1,243/255,178/255,1)
+                        multiline:False
+                        background_color: (0,0,0,0)
+                        background_normal:''
+                        id:username
+                        #border: 30,30,30,30
+                        size_hint:(1,None)
+                        size:100,30
+                        pos_hint:{'x':0,'top':0}
+                        on_text_validate:password.focus=True
+                        canvas.after:
+                            Color:
+                                rgba: (1,1,1,1)
+                            
+                            Line:
+                                points:[self.pos[0],self.pos[1],self.pos[0]+self.width,self.pos[1]]
+                            #Color:
+                                #rgba: (0,1,0,1)
+                            
+                            #Rectangle:
+                                #pos:self.pos
+                                #size:self.size
+                        
+
+                
+                    
+                BoxLayout:
+                    size_hint:(1,.5)
+                    pos_hint:{'center_y':.5}
+                    orientation: 'vertical'
+                    Label:
+                        text:'Password'
+                        text_size:self.size
+                        halign:'left'
+                        pos_hint:{'x':0,'y':0}
+                        size_hint:(None,None)
+                        size:100,30
+                    TextInput:
+                        cursor_color:(1,243/255,178/255,1)
+                        multiline:False
+                        background_color: (0,0,0,0)
+                        background_normal:''
+                        password:True
+                        id:password
+                        size_hint:(1,None)
+                        size:100,30
+                        pos_hint:{'x':0,'top':0}
+                        on_text_validate:sign_in_button.on_press
+                        canvas.after:
+                            Color:
+                                rgba: (1,1,1,1)
+                            Line:
+                                points:[self.pos[0],self.pos[1],self.pos[0]+self.width,self.pos[1]]
+                        
+            RoundedButton:
+                id:sign_in_button
+                pos_hint:{'center_x':.5}
+                size_hint:(None,None)
+                height:'30dp'
+                width:'180dp'
+                text: 'Sign In'
+                color:(0,0,0,1)
+                on_press:root.manager.current='home_screen'  #print(self.text) #root.current='login_screen'  # #
+
+            Label:
+                id:bottom_text
+                size_hint:1,.1
+                text:"You don't have an account ? sign up       "  #here
+            FloatLayout:
+                size_hint:(1,None)
+                height:0
+                Button:
+                    id:b
+                    size_hint:(None,None)
+                    height:'5dp'
+                    width:'31dp'
+                    background_color: (0,0,0,0)
+                    background_normal:''
+                    text:'here'
+                    color:1,243/255,178/255,1
+                    #valign:'bottom'
+                    
+                    pos:(bottom_text.pos[0]+bottom_text.size[0]/2+105,bottom_text.pos[1]+bottom_text.size[1]/2-3) # bottom_text.pos #
+                    on_press:root.manager.current='signup_screen' #print(rounded.padding) #print(sm.screens) #mainframe.switch() 
+        
+                    
+
+        
+<RoundedButton@Button>:
+
+    background_color: (0,0,0,0)
+    #background_normal:''
+    
+    
+    canvas.before:
+        Color:
+            rgba: 1,243/255,178/255,1
+        
+        RoundedRectangle:
+            size:self.size
+            pos: self.pos
+            radius:[10,]
+
+           
+
+            
