@@ -22,7 +22,9 @@ class Chat:
         self.friend_name=friend_name
         result=self.database.get_user_chat_history(self.username,friend_name)
         count=0
+        print("*"*20)
         print('result**>>',result)
+        print("*"*20)
         print(len(result))
         while count<len(result):
             #print(count)

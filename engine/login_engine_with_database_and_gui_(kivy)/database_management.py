@@ -37,9 +37,10 @@ class Database:
         surname=pair['surname']
         first_name=pair['first name']
         password=pair['password']
-        add_user_to_table='INSERT INTO users(username,surname,first_name,password) VALUES (?,?,?,?)'
+        add_user_to_table=' INSERT INTO users(username,surname,first_name,password) VALUES (?,?,?,?) '
         params=(username,surname,first_name,password)
         self.interact_with_database(add_user_to_table,params)
+        self.create_user_friends_table(username)
     def select_from_database(self,instruction,name='users_login_database.db',params=''):
         print('naming>>> ',type(name))
         self.db_file=sqlite3.connect('db/'+name)
@@ -91,41 +92,50 @@ class Database:
         pass
 
    # the chat history part
+   def create_user_friends_table(self,username):
+       #self.check_table_created(username)
+        self.db_file=sqlite3.connect('db/'+username+'.db')
+        self.cursor=self.db_file.cursor()
+        
+        instr2='CREATE TABLE friend_list(friend text)'
+        
+        self.cursor.execute(instr2)
+        self.db_file.commit()
+        self.db_file.close()
     def create_new_friend_db(self,username,friend_name):
+        '''
         #print(self.get_friend_list(username))
         if username+'.db' not in os.listdir(os.path.abspath(os.path.dirname(__file__))+'/db/'):
-            print('*'*18)
             self.check_table_created(username)
             self.db_file=sqlite3.connect('db/'+username+'.db')
             self.cursor=self.db_file.cursor()
             
             instr='CREATE TABLE '+username+'_'+friend_name+'_chat (sn text,date text,message text,owner text)'
-            instr2='CREATE TABLE friend_list(friend text)'
             instr3='INSERT INTO friend_list(friend) VALUES(?)'
             param3=(friend_name,)
             
             self.cursor.execute(instr)
-            self.cursor.execute(instr2)
             self.cursor.execute(instr3,param3)
             self.db_file.commit()
             self.db_file.close()
         else:
-            _list=self.get_friend_list(username)
-            friend_list=[]
-            for i in _list:
-                friend_list.append(i['friend'])
-            print('friend_list',friend_list)
-            if friend_name not in friend_list:
-                self.db_file=sqlite3.connect('db/'+username+'.db')
-                self.cursor=self.db_file.cursor()
-                instr='CREATE TABLE '+username+'_'+friend_name+'_chat(sn text,date text,message text,owner text)'
-                
-                instr3='INSERT INTO friend_list(friend) VALUES(?)'
-                param3=(friend_name,)
-                self.cursor.execute(instr3,param3)
-                self.cursor.execute(instr,)
-                self.db_file.commit()
-                self.db_file.close()
+            '''
+        _list=self.get_friend_list(username)
+        friend_list=[]
+        for i in _list:
+            friend_list.append(i['friend'])
+        print('friend_list',friend_list)
+        if friend_name not in friend_list:
+            self.db_file=sqlite3.connect('db/'+username+'.db')
+            self.cursor=self.db_file.cursor()
+            instr='CREATE TABLE '+username+'_'+friend_name+'_chat(sn text,date text,message text,owner text)'
+            
+            instr3='INSERT INTO friend_list(friend) VALUES(?)'
+            param3=(friend_name,)
+            self.cursor.execute(instr3,param3)
+            self.cursor.execute(instr,)
+            self.db_file.commit()
+            self.db_file.close()
         #self.create_database
     def check_table_created(self,username):
         table_extract_instr = """SELECT name FROM sqlite_master WHERE type='table';"""
